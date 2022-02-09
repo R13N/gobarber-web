@@ -47,8 +47,6 @@ api.interceptors.response.use(
             failedRequestsQueue.forEach(request => request.onFailure(error))
             failedRequestsQueue = []
 
-            console.log('Erro ao renovar token')
-
             // signOut()
           })
           .finally(() => {

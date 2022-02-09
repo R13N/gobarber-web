@@ -3,7 +3,7 @@ import ptBR from 'date-fns/locale/pt-BR'
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import DayPicker, { DayModifiers } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
-import { FiClock, FiPower } from 'react-icons/fi'
+import { FiClock, FiPower, FiUser } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import logoImg from '../../assets/logo.svg'
 import { useAuth } from '../../hooks/useAuth'
@@ -119,13 +119,11 @@ export const Dashboard: React.FC = () => {
           <img src={logoImg} alt="Logo GoBarber" />
 
           <S.HeaderProfile>
-            <img
-              src={
-                user.avatar_url ||
-                'https://api.adorable.io/avatars/56/abott@adorable.io.png'
-              }
-              alt={user.name}
-            />
+            {user.avatar_url ? (
+              <img src={user.avatar_url} alt={user.name} />
+            ) : (
+              <FiUser size={30} color="#ff9000" />
+            )}
 
             <div>
               <span>Bem-vindo,</span>
@@ -154,13 +152,14 @@ export const Dashboard: React.FC = () => {
             <S.NextAppointment>
               <strong>Atendimento a seguir</strong>
               <div>
-                <img
-                  src={
-                    nextAppointment.user.avatar_url ||
-                    'https://api.adorable.io/avatars/80/abott@adorable.io.png'
-                  }
-                  alt={nextAppointment.user.name}
-                />
+                {nextAppointment.user.avatar_url ? (
+                  <img
+                    src={nextAppointment.user.avatar_url}
+                    alt={nextAppointment.user.name}
+                  />
+                ) : (
+                  <FiUser size={30} color="#ff9000" />
+                )}
 
                 <strong>{nextAppointment.user.name}</strong>
                 <span>
@@ -186,13 +185,14 @@ export const Dashboard: React.FC = () => {
                 </span>
 
                 <div>
-                  <img
-                    src={
-                      appointment.user.avatar_url ||
-                      'https://api.adorable.io/avatars/56/abott@adorable.io.png'
-                    }
-                    alt={appointment.user.name}
-                  />
+                  {appointment.user.avatar_url ? (
+                    <img
+                      src={appointment.user.avatar_url}
+                      alt={appointment.user.name}
+                    />
+                  ) : (
+                    <FiUser size={30} color="#ff9000" />
+                  )}
 
                   <strong>{appointment.user.name}</strong>
                 </div>
@@ -214,13 +214,14 @@ export const Dashboard: React.FC = () => {
                 </span>
 
                 <div>
-                  <img
-                    src={
-                      appointment.user.avatar_url ||
-                      'https://api.adorable.io/avatars/56/abott@adorable.io.png'
-                    }
-                    alt={appointment.user.name}
-                  />
+                  {appointment.user.avatar_url ? (
+                    <img
+                      src={appointment.user.avatar_url}
+                      alt={appointment.user.name}
+                    />
+                  ) : (
+                    <FiUser size={30} color="#ff9000" />
+                  )}
 
                   <strong>{appointment.user.name}</strong>
                 </div>

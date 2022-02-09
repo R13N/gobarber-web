@@ -1,17 +1,15 @@
-import { createContext, useCallback, useState } from 'react'
-import { v4 } from 'uuid'
-import ToastContainer from '../components/ToastContainer'
+import { createContext, useCallback } from 'react'
+import { toast, ToastContainer } from 'react-toastify'
+import { Toast as ToastApp } from '../components/Toast'
 
 export interface ToastMessage {
-  id: string
   type?: 'success' | 'error' | 'info'
   title: string
   description?: string
 }
 
 interface ToastContextData {
-  addToast(message: Omit<ToastMessage, 'id'>): void
-  removeToast(id: string): void
+  addToast(message: ToastMessage): void
 }
 
 export const ToastContext = createContext<ToastContextData>(
@@ -19,31 +17,20 @@ export const ToastContext = createContext<ToastContextData>(
 )
 
 export const ToastProvider: React.FC = ({ children }) => {
-  const [messages, setMessages] = useState<ToastMessage[]>([])
+  const addToast = useCallback(({ type, title, description }: ToastMessage) => {
+    const message = {
+      type,
+      title,
+      description,
+    }
 
-  const addToast = useCallback(
-    ({ type, title, description }: Omit<ToastMessage, 'id'>) => {
-      const id = v4()
-
-      const toast = {
-        id,
-        type,
-        title,
-        description,
-      }
-
-      setMessages(state => [...state, toast])
-    },
-    []
-  )
-  const removeToast = useCallback((id: string) => {
-    setMessages(state => state.filter(message => message.id !== id))
+    toast(<ToastApp message={message} />)
   }, [])
 
   return (
-    <ToastContext.Provider value={{ addToast, removeToast }}>
+    <ToastContext.Provider value={{ addToast }}>
       {children}
-      <ToastContainer messages={messages} />
+      <ToastContainer />
     </ToastContext.Provider>
   )
 }

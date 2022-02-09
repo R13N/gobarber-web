@@ -1,4 +1,3 @@
-import { shade } from 'polished'
 import styled, { keyframes } from 'styled-components'
 import signInBackgroundImg from '../../assets/sign-in-background.png'
 
@@ -55,7 +54,7 @@ export const AnimationContainer = styled.div`
       transition: color 0.3s;
 
       &:hover {
-        color: ${shade(0.2, '#f4ede8')};
+        filter: brightness(0.8);
       }
     }
   }
@@ -75,7 +74,7 @@ export const AnimationContainer = styled.div`
     }
 
     &:hover {
-      color: ${shade(0.2, '#ff9000')};
+      filter: brightness(0.8);
     }
   }
 `

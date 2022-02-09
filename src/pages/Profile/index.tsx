@@ -22,8 +22,8 @@ interface ProfileFormData {
 
 export const Profile: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
-  const { addToast } = useToast()
   const navigate = useNavigate()
+  const { addToast } = useToast()
 
   const { user, updateUser } = useAuth()
 

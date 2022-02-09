@@ -20,8 +20,8 @@ interface SignUpFormData {
 
 export const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
-  const { addToast } = useToast()
   const navigate = useNavigate()
+  const { addToast } = useToast()
 
   const handleSubmit = useCallback(
     async (data: SignUpFormData) => {

@@ -1,22 +1,36 @@
 import React from 'react'
-import { Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import { Dashboard } from '../pages/Dashboard'
 import { ForgotPassword } from '../pages/ForgotPassword'
 import { Profile } from '../pages/Profile'
 import { ResetPassword } from '../pages/ResetPassword'
 import { SignIn } from '../pages/SignIn'
 import { SignUp } from '../pages/SignUp'
-import RouteApp from './RouteApp'
+import { RequireAuth } from './RequireAuth'
 
 const RoutesApp: React.FC = () => (
   <Routes>
-    <RouteApp path="/" element={SignIn} />
-    <RouteApp path="/signup" element={SignUp} />
-    <RouteApp path="/forgot-password" element={ForgotPassword} />
-    <RouteApp path="/reset-password" element={ResetPassword} />
+    <Route path="/" element={<SignIn />} />
+    <Route path="/signup" element={<SignUp />} />
+    <Route path="/forgot-password" element={<ForgotPassword />} />
+    <Route path="/reset-password" element={<ResetPassword />} />
 
-    <RouteApp path="/dashboard" element={Dashboard} isPrivate />
-    <RouteApp path="/profile" element={Profile} isPrivate />
+    <Route
+      path="/dashboard"
+      element={
+        <RequireAuth>
+          <Dashboard />
+        </RequireAuth>
+      }
+    />
+    <Route
+      path="/profile"
+      element={
+        <RequireAuth>
+          <Profile />
+        </RequireAuth>
+      }
+    />
   </Routes>
 )
 

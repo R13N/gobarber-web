@@ -34,7 +34,7 @@ api.interceptors.response.use(
           .then(response => {
             const { token } = response.data
 
-            localStorage.setItem('@Gobarber:token', token)
+            localStorage.setItem('@GoBarber:token', token)
 
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore

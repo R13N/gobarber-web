@@ -17,7 +17,7 @@ interface ResetPasswordFormData {
   password_confirmation: string
 }
 
-const ResetPassword: React.FC = () => {
+export const ResetPassword: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
   const navigate = useNavigate()
   const location = useLocation()
@@ -103,5 +103,3 @@ const ResetPassword: React.FC = () => {
     </Container>
   )
 }
-
-export default ResetPassword

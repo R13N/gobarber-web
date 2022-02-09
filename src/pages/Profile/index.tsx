@@ -20,7 +20,7 @@ interface ProfileFormData {
   password_confirmation: string
 }
 
-const Profile: React.FC = () => {
+export const Profile: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
   const { addToast } = useToast()
   const navigate = useNavigate()
@@ -188,5 +188,3 @@ const Profile: React.FC = () => {
     </Container>
   )
 }
-
-export default Profile

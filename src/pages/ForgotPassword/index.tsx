@@ -17,7 +17,7 @@ interface ForgotPasswordFormData {
   password: string
 }
 
-const ForgotPassword: React.FC = () => {
+export const ForgotPassword: React.FC = () => {
   const [loading, setLoading] = useState(false)
   const formRef = useRef<FormHandles>(null)
   // const history = useHistory();
@@ -96,5 +96,3 @@ const ForgotPassword: React.FC = () => {
     </Container>
   )
 }
-
-export default ForgotPassword

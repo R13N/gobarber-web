@@ -18,7 +18,7 @@ interface SignUpFormData {
   password: string
 }
 
-const SignUp: React.FC = () => {
+export const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null)
   const { addToast } = useToast()
   const navigate = useNavigate()
@@ -98,5 +98,3 @@ const SignUp: React.FC = () => {
     </Container>
   )
 }
-
-export default SignUp

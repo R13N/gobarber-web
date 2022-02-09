@@ -8,6 +8,8 @@
 
 <p align="center">Uma aplicação para visualizar seus agendamentos</p>
 
+https://user-images.githubusercontent.com/50559834/153307127-78eb5d03-4c32-47c8-ac2d-75d6420902fa.mp4
+
 <p align="center">
   <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/saymondamasio/gobarber-web">
 

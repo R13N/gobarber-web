@@ -86,7 +86,7 @@ export const SignIn: React.FC = () => {
             <Link to="/forgot-password">Esqueci minha senha</Link>
           </Form>
 
-          <Link to="/signup">
+          <Link to="/sign-up">
             <FiLogIn />
             Criar conta
           </Link>

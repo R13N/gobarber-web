@@ -27,6 +27,8 @@ export const GlobalStyle = createGlobalStyle`
     cursor: pointer;
   }
 
+
+
   /* input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,

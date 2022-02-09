@@ -7,7 +7,7 @@ import { FiClock, FiPower } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import logoImg from '../../assets/logo.svg'
 import { useAuth } from '../../hooks/useAuth'
-import api from '../../services/api'
+import { api } from '../../services/api'
 import * as S from './styles'
 
 interface MonthAvailabilityItem {

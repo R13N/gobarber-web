@@ -1,5 +1,5 @@
 import React, { createContext, useCallback, useState } from 'react'
-import api from '../services/api'
+import { api } from '../services/api'
 
 interface User {
   id: string
@@ -30,6 +30,8 @@ export const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 export function signOut() {
   localStorage.removeItem('@GoBarber:token')
   localStorage.removeItem('@GoBarber:user')
+
+  location.href = '/'
 }
 
 export const AuthProvider: React.FC = ({ children }) => {
@@ -40,7 +42,7 @@ export const AuthProvider: React.FC = ({ children }) => {
     if (token && user) {
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      api.defaults.headers.authorization = `Bearer ${token}`
+      api.defaults.headers.Authorization = `Bearer ${token}`
       return { token, user: JSON.parse(user) }
     }
 
@@ -48,22 +50,28 @@ export const AuthProvider: React.FC = ({ children }) => {
   })
 
   const signIn = useCallback(async ({ email, password }) => {
-    const reseponse = await api.post('sessions', { email, password })
+    const response = await api.post('auth/login', { email, password })
 
-    const { token, user } = reseponse.data
+    const { token } = response.data
 
     localStorage.setItem('@GoBarber:token', token)
-    localStorage.setItem('@GoBarber:user', JSON.stringify(user))
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    api.defaults.headers.authorization = `Bearer ${token}`
+    api.defaults.headers.Authorization = `Bearer ${token}`
+
+    const responseProfile = await api.get('profile')
+
+    const user = responseProfile.data
+
+    localStorage.setItem('@GoBarber:user', JSON.stringify(user))
 
     setData({ token, user })
   }, [])
 
-  const signOut = useCallback(() => {
-    localStorage.removeItem('@GoBarber:token')
+  const signOut = useCallback(async () => {
+    await api.delete('auth/revoke')
+    // localStorage.removeItem('@GoBarber:token')
     localStorage.removeItem('@GoBarber:user')
 
     setData({} as AuthState)

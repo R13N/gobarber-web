@@ -8,7 +8,7 @@ import Button from '../../components/Button'
 import Input from '../../components/Input'
 import { useAuth } from '../../hooks/useAuth'
 import { useToast } from '../../hooks/useToast'
-import api from '../../services/api'
+import { api } from '../../services/api'
 import getValidationErrors from '../../utils/getValidationErrors'
 import { AvatarInput, Container, Content } from './styles'
 
@@ -99,7 +99,7 @@ export const Profile: React.FC = () => {
         })
       }
     },
-    [addToast, history, updateUser]
+    [addToast, navigate, updateUser]
   )
 
   const handleAvatarChange = useCallback(

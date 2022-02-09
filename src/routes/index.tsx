@@ -6,31 +6,22 @@ import { Profile } from '../pages/Profile'
 import { ResetPassword } from '../pages/ResetPassword'
 import { SignIn } from '../pages/SignIn'
 import { SignUp } from '../pages/SignUp'
-import { RequireAuth } from './RequireAuth'
+import { ProtectedRouteWrapper } from './ProtectedRouteWrapper'
+import { PublicRouteWrapper } from './PublicRouteWrapper'
 
 const RoutesApp: React.FC = () => (
   <Routes>
-    <Route path="/" element={<SignIn />} />
-    <Route path="/signup" element={<SignUp />} />
-    <Route path="/forgot-password" element={<ForgotPassword />} />
-    <Route path="/reset-password" element={<ResetPassword />} />
+    <Route element={<PublicRouteWrapper />}>
+      <Route path="/" element={<SignIn />} />
+      <Route path="/sign-up" element={<SignUp />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+    </Route>
 
-    <Route
-      path="/dashboard"
-      element={
-        <RequireAuth>
-          <Dashboard />
-        </RequireAuth>
-      }
-    />
-    <Route
-      path="/profile"
-      element={
-        <RequireAuth>
-          <Profile />
-        </RequireAuth>
-      }
-    />
+    <Route element={<ProtectedRouteWrapper />}>
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/profile" element={<Profile />} />
+    </Route>
   </Routes>
 )
 

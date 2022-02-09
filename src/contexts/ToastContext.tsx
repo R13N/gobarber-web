@@ -1,7 +1,7 @@
 import { createContext, useCallback } from 'react'
 import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import { Toast as ToastApp } from '../components/Toast'
-
 export interface ToastMessage {
   type?: 'success' | 'error' | 'info'
   title: string
@@ -24,7 +24,22 @@ export const ToastProvider: React.FC = ({ children }) => {
       description,
     }
 
-    toast(<ToastApp message={message} />)
+    toast(<ToastApp message={message} />, {
+      autoClose: 10000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      rtl: false,
+      closeButton: false,
+      style: {
+        padding: 0,
+      },
+      bodyStyle: {
+        padding: 0,
+      },
+    })
   }, [])
 
   return (

@@ -12,7 +12,7 @@
     "https://raw.githubusercontent.com/saymondamasio/gobarber-web/main/.github/screenshot-4.jpg",
     "https://raw.githubusercontent.com/saymondamasio/gobarber-web/main/.github/screenshot-5.jpg"
   ],
-  "link_preview": "https://moveit-damasio.vercel.app",
+  "link_preview": "https://gobarber-web.netlify.app",
   "techs": [
     {
       "name": "React.js",

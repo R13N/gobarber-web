@@ -69,7 +69,7 @@ export const ResetPassword: React.FC = () => {
         })
       }
     },
-    [addToast, history, location.search]
+    [addToast, navigate, location.search]
   )
 
   return (
